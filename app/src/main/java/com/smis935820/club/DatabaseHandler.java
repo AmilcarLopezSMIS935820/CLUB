@@ -17,8 +17,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        ///El codigo lo puse TEXT por si hacen uso de uno como el nuestro
-        db.execSQL("CREATE TABLE Miembros(codMiembro TEXT PRIMARY KEY, numAfiliacion TEXT, nombre TEXT, telefono TEXT)"); /// Creación de tabla
+        ///Por el momento deje todos los campos en condición de texto, pero el ingreso si lo defini segun su tipo de entrada...
+        db.execSQL("CREATE TABLE Miembros(codMiembro TEXT PRIMARY KEY, numAfiliacion INTEGER, nombre TEXT, telefono TEXT)"); /// Creación de tabla
     }
 
     @Override

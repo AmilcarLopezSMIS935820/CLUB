@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idTXT=codMiembro.getText().toString();
-                String numATXT=numAfiliacion.getText().toString();
-                String nombreTXT=nombre.getText().toString();
-                String telefonoTXT=telefono.getText().toString();
+                String idTXT=codMiembro.getText().toString().trim();
+                String numATXT=numAfiliacion.getText().toString().trim();
+                String nombreTXT=nombre.getText().toString().trim();
+                String telefonoTXT=telefono.getText().toString().trim();
 
                 if (validar()){
 
@@ -47,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
                     //Evaluación de la data insertada
                     if (checkInsert==true){
                         Toast.makeText(MainActivity.this, "Se ha insertado un nuevo registro", Toast.LENGTH_SHORT).show();
+                        codMiembro.setText("");
+                        numAfiliacion.setText("");
+                        nombre.setText("");
+                        telefono.setText("");
+                        codMiembro.requestFocus();
                     } else{
                         Toast.makeText(MainActivity.this, "No se ha podido insertado el registro", Toast.LENGTH_SHORT).show();
                     }
@@ -73,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     buffer.append("Afiliación #: " + result.getString(1) + "\n");
                     buffer.append("Nombre: " + result.getString(2) + "\n");
                     buffer.append("Telefono: " + result.getString(3) + "\n");
-                    buffer.append("---------------------------------------------------------------" + "\n\n");
+                    buffer.append("--------------------------------------------------------------" + "\n\n");
                 }
 
                 //Mostrar los registros
@@ -91,27 +96,29 @@ public class MainActivity extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idTXT=codMiembro.getText().toString();
-                String numATXT=numAfiliacion.getText().toString();
-                String nombreTXT=nombre.getText().toString();
-                String telefonoTXT=telefono.getText().toString();
+                String idTXT=codMiembro.getText().toString().trim();
+                String numATXT=numAfiliacion.getText().toString().trim();
+                String nombreTXT=nombre.getText().toString().trim();
+                String telefonoTXT=telefono.getText().toString().trim();
 
-                Boolean check=DB.updateData(idTXT, numATXT, nombreTXT, telefonoTXT);
+                if (validar()){
+                    Boolean check=DB.updateData(idTXT, numATXT, nombreTXT, telefonoTXT);
 
-                if (check==true){
-                    Toast.makeText(MainActivity.this, "Se ha actualizado el registro", Toast.LENGTH_SHORT).show();
-                } else{
-                    Toast.makeText(MainActivity.this, "No se ha podido actualizar el registro", Toast.LENGTH_SHORT).show();
+                    if (check==true){
+                        Toast.makeText(MainActivity.this, "Se ha actualizado el registro", Toast.LENGTH_SHORT).show();
+                        codMiembro.setText("");
+                        numAfiliacion.setText("");
+                        nombre.setText("");
+                        telefono.setText("");
+                        codMiembro.requestFocus();
+                    } else{
+                        Toast.makeText(MainActivity.this, "No se ha podido actualizar el registro", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
     }
 
-    public void agregar(View view){
-        if (validar()){
-            Toast.makeText(this, "Proceso realizado", Toast.LENGTH_LONG).show();
-        }
-    }
 
     public boolean validar(){
         boolean retorno= true;
