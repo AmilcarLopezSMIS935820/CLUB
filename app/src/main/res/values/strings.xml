@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CLUB</string>
+    <string name="titulo">Miembros del Club</string>
+    <string name="cod">Codigo:</string>
+    <string name="num">Afiliación #:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="telefono">Telefono:</string>
+    <string name="bt1">Insertar</string>
+    <string name="bt2">Actualizar</string>
+    <string name="bt3">Verificar</string>
+</resources>
