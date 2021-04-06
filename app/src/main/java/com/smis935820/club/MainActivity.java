@@ -3,6 +3,7 @@ package com.smis935820.club;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     EditText codMiembro, numAfiliacion, nombre, telefono;
-    Button insert, list, update;
+    Button insert, list, update, delete;
     DatabaseHandler DB;
 
     @Override
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         insert = findViewById(R.id.btnInsert);
         list = findViewById(R.id.btnViewData);
         update = findViewById(R.id.btnActualizar);
+        delete = findViewById(R.id.btnEliminar);
         DB = new DatabaseHandler(this);
 
         ///Evento de boton
@@ -87,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
                 builder.setTitle("Listado de Miembros");
                 builder.setMessage(buffer.toString());
                 builder.show();
-
             }
         });
 
@@ -114,6 +115,28 @@ public class MainActivity extends AppCompatActivity {
                     } else{
                         Toast.makeText(MainActivity.this, "No se ha podido actualizar el registro", Toast.LENGTH_SHORT).show();
                     }
+                }
+            }
+        });
+
+
+        // Boton Eliminar
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String idTXT=codMiembro.getText().toString().trim();
+
+                Boolean checkdeleteData = DB.deleteData(idTXT);
+
+                if (checkdeleteData){
+                    Toast.makeText(MainActivity.this, "Se elimino el registro", Toast.LENGTH_SHORT).show();
+                    codMiembro.setText("");
+                    numAfiliacion.setText("");
+                    nombre.setText("");
+                    telefono.setText("");
+                    codMiembro.requestFocus();
+                } else{
+                    Toast.makeText(MainActivity.this, "Error al eliminar el registro", Toast.LENGTH_SHORT).show();
                 }
             }
         });

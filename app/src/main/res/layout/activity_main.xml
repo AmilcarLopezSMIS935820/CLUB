@@ -130,13 +130,25 @@
             android:id="@+id/btnInsert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:background="#A10303"
             android:text="@string/bt1"
             android:textColor="@color/white"
             android:textSize="17dp"
             android:textStyle="bold"
             app:backgroundTint="#A10303" />
+
+        <Button
+            android:id="@+id/btnEliminar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9sp"
+            android:background="#BA2803"
+            android:text="@string/bt4"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            app:backgroundTint="#BA2803" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -169,7 +181,6 @@
                 android:textStyle="bold"
                 app:backgroundTint="#CF2D03" />
         </LinearLayout>
-
     </LinearLayout>
 
 
